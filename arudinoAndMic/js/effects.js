@@ -77,6 +77,7 @@ function cancelAnalyserUpdates() {
 
 function updateAnalysers(time) {
     analyserView1.doFrequencyAnalysis( analyser1 );
+
     analyserView2.doFrequencyAnalysis( analyser2 );
     
     rafID = window.requestAnimationFrame( updateAnalysers );
@@ -115,6 +116,7 @@ function gotStream(stream) {
     // Create an AudioNode from the stream.
 //    realAudioInput = audioContext.createMediaStreamSource(stream);
     var input = audioContext.createMediaStreamSource(stream);
+    
 
 /*
     realAudioInput = audioContext.createBiquadFilter();

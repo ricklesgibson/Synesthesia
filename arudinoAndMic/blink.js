@@ -7,6 +7,7 @@ function setPosition(position) {
   var uint8View = new Uint8Array(buffer);
   uint8View[0] = position;
   chrome.serial.send(connectionId, buffer, function() {});
+  console.log("position uint8View ", uint8View);
 };
 
 
@@ -24,9 +25,10 @@ function onOpen(openInfo) {
   chrome.serial.onReceive.addListener(function(data){
     
     var uint8View = new Uint8Array(data.data);
-    var value = String.fromCharCode(uint8View[1]);
+    var value = String.fromCharCode(uint8View[0]);
       // console.log("our data",data.data.byteLength);
-      console.log("uint8View", value);
+        console.log("uint8View", uint8View);
+
     if (value == "a") // Light on and off
   {
       console.log("CMD[a]: " + readBuffer);

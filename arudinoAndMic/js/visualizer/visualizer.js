@@ -78,6 +78,7 @@ AnalyserView = function(canvasElementID) {
 
 
     this.initGL();
+
 }
 
 function load3DSonogram( shader ) {
@@ -236,6 +237,7 @@ AnalyserView.prototype.initByteBuffer = function( analyser ) {
     if (!this.freqByteData || this.freqByteData.length != analyser.frequencyBinCount) {
         freqByteData = new Uint8Array(analyser.frequencyBinCount);
         this.freqByteData = freqByteData;
+        // console.log(freqByteData);
         
         // (Re-)Allocate the texture object
         if (this.texture) {
@@ -291,6 +293,7 @@ AnalyserView.prototype.doFrequencyAnalysis = function( analyser ) {
     }
   
     this.drawGL();
+    // console.log(freqByteData);
 }
 
 
@@ -306,6 +309,7 @@ AnalyserView.prototype.drawGL = function() {
     var sonogram3DWidth = this.sonogram3DWidth;
     var sonogram3DHeight = this.sonogram3DHeight;
     var freqByteData = this.freqByteData;
+    // console.log(freqByteData);
     var texture = this.texture;
     var TEXTURE_HEIGHT = this.TEXTURE_HEIGHT;
     
